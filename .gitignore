@@ -1,0 +1,13 @@
+# Ignore Node Modules
+server/node_modules/
+
+
+# Ignore Build Dir
+server/dist/
+
+
+#Ignore .env file
+server/.env
+
+# Ignore OS-specific files
+.DS_Store
