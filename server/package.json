@@ -20,6 +20,10 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^8.4.1",
+<<<<<<< HEAD
+=======
+    "webidl-conversions": "^7.0.0",
+>>>>>>> Development
     "zod": "^3.23.8"
   },
   "devDependencies": {
