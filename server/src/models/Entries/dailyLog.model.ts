@@ -1,6 +1,6 @@
 import { Schema, model, ObjectId } from "mongoose";
 
-export interface IEntry {
+interface IEntry {
   user_id: ObjectId;
   type: "task" | "note" | "event";
   content: string;
@@ -8,7 +8,7 @@ export interface IEntry {
   createdAt: Date;
   updatedAt: Date;
 }
-export interface IDailyLog {
+interface IDailyLog {
   user_id: ObjectId;
   date: Date;
   entries: IEntry[];
@@ -52,7 +52,7 @@ const dailyLogSchema = new Schema<IDailyLog>(
     date: {
       type: Date,
       required: true,
-      default: Date.now(),
+      default: () => Date.now(),
     },
     entries: [
       {
@@ -68,5 +68,7 @@ const dailyLogSchema = new Schema<IDailyLog>(
 dailyLogSchema.index({ date: 1 });
 entrySchema.index({ created_at: 1 });
 
-export const IEntryM = model<IEntry>("Entries", entrySchema);
-export default model<IDailyLog>("Daily Logs", dailyLogSchema);
+const IEntryM = model<IEntry>("Entries", entrySchema);
+const IDaily = model<IDailyLog>("Daily Logs", dailyLogSchema);
+
+export { IEntryM, IDaily, IDailyLog, IEntry};
